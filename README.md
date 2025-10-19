@@ -13,4 +13,4 @@
 ![two_dark.jpg](app/src/main/res/drawable/two_dark.jpg)
 
 ## Альбомная ориентация:
-[![Альбомная ориентация](horizontal.mp4/preview.gif)](app/src/main/res/drawable/horizontal.mp4)
+[![Альбомная_ориентация](horizontal.mp4/preview.gif)](app/src/main/res/drawable/horizontal.mp4)
