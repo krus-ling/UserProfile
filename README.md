@@ -19,3 +19,5 @@
 
 ## 📺 Альбомная ориентация
 ![horizontal.gif](app/src/main/res/drawable/horizontal.gif)
+
+# Гук Егор Михайлович РИ-330940 😉
