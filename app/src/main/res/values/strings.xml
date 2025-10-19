@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">UserProfile</string>
+    <string name="app_name">Анкета пользователя</string>
+    <string name="name_hint">Введите имя</string>
+    <string name="age_label">Возраст: %1$d</string>
+    <string name="gender_male">Мужской</string>
+    <string name="gender_female">Женский</string>
+    <string name="newsletter">Хочу получать новости</string>
+    <string name="submit">Отправить</string>
+    <string name="error_name">Пожалуйста, введите имя</string>
+    <string name="summary">Имя: %1$s\nВозраст: %2$d\nПол: %3$s\nПодписка: %4$s</string>
 </resources>
