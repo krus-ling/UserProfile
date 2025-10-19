@@ -66,20 +66,20 @@ fun UserFormContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // Аватар
+                // 🖼️ Аватар
                 Image(
                     painter = painterResource(id = R.drawable.ic_avatar),
                     contentDescription = "Аватар",
                     modifier = Modifier.size(100.dp)
                 )
 
-                // Имя
+                // ✏️ Поле имени
                 OutlinedTextField(
                     value = name,
                     onValueChange = {
@@ -93,11 +93,12 @@ fun UserFormContent(
                 if (nameError) {
                     Text(
                         text = stringResource(id = R.string.error_name),
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodySmall
                     )
                 }
 
-                // Возраст
+                // 🎚️ Возраст
                 Text(text = stringResource(R.string.age_label, age.toInt()))
                 Slider(
                     value = age,
@@ -107,7 +108,7 @@ fun UserFormContent(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // Пол
+                // 🚻 Пол
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
@@ -115,39 +116,49 @@ fun UserFormContent(
                     listOf("Мужской", "Женский").forEach { option ->
                         Row(
                             Modifier
-                                .selectable(selected = (gender == option), onClick = { gender = option })
+                                .selectable(
+                                    selected = (gender == option),
+                                    onClick = { gender = option }
+                                )
                                 .padding(horizontal = 16.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            RadioButton(selected = (gender == option), onClick = { gender = option })
+                            RadioButton(
+                                selected = (gender == option),
+                                onClick = { gender = option }
+                            )
                             Text(text = option)
                         }
                     }
                 }
 
-                // Подписка
+                // ✉️ Подписка
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(checked = newsletter, onCheckedChange = { newsletter = it })
                     Text(text = stringResource(id = R.string.newsletter))
                 }
 
-                // Кнопка
+                // 🧾 Кнопка "Отправить"
                 Button(
                     onClick = {
-                        if (name.isBlank()) nameError = true
-                        else showSummary = true
+                        if (name.isBlank()) {
+                            nameError = true
+                            showSummary = false
+                        } else {
+                            showSummary = true
+                        }
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = stringResource(id = R.string.submit))
                 }
 
-                // Сводка с анимацией
+                // 🎉 Сводка (анимировано)
                 AnimatedVisibility(
                     visible = showSummary,
                     enter = fadeIn() + slideInVertically()
                 ) {
-                    val subscription = if (newsletter) "✅" else "❌"
+                    val subscription = if (newsletter) "✅ Подписан" else "❌ Не подписан"
                     Text(
                         text = stringResource(
                             id = R.string.summary,
@@ -156,18 +167,19 @@ fun UserFormContent(
                             gender,
                             subscription
                         ),
-                        modifier = Modifier.padding(top = 8.dp)
+                        modifier = Modifier.padding(top = 8.dp),
+                        style = MaterialTheme.typography.bodyLarge
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-                // Switch для смены темы
+                // 🌗 Переключатель темы
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = if (isDarkTheme) "Тёмная тема" else "Светлая тема")
+                    Text(text = if (isDarkTheme) "🌙 Тёмная тема" else "☀️ Светлая тема")
                     Spacer(modifier = Modifier.width(8.dp))
                     Switch(
                         checked = isDarkTheme,
@@ -179,7 +191,7 @@ fun UserFormContent(
     }
 }
 
-@Preview(name = "Light Mode", showBackground = true)
+@Preview(name = "Light Mode", showBackground = true, widthDp = 400, heightDp = 800)
 @Composable
 fun PreviewUserFormLight() {
     UserFormTheme(darkTheme = false) {
@@ -187,10 +199,18 @@ fun PreviewUserFormLight() {
     }
 }
 
-@Preview(name = "Dark Mode", showBackground = true)
+@Preview(name = "Dark Mode", showBackground = true, widthDp = 400, heightDp = 800)
 @Composable
 fun PreviewUserFormDark() {
     UserFormTheme(darkTheme = true) {
         UserFormContent(isDarkTheme = true, onThemeChange = {})
+    }
+}
+
+@Preview(name = "Landscape Mode", showBackground = true, widthDp = 800, heightDp = 400)
+@Composable
+fun PreviewUserFormLandscape() {
+    UserFormTheme(darkTheme = false) {
+        UserFormContent(isDarkTheme = false, onThemeChange = {})
     }
 }
