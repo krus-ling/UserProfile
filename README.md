@@ -24,6 +24,6 @@
 ![error.jpg](app/src/main/res/drawable/error.jpg)
 
 ## 📺 Демо работы + альбомная ориентация
-<video src="app/src/main/res/drawable/demo.mp4" width="320" height="240" controls></video>
+[<video src="app/src/main/res/drawable/demo.mp4" width="320" height="240" controls></video>](https://github.com/user-attachments/assets/aa1fddb0-0895-493b-a8f7-c917f2bc6543)
 
 # Гук Егор Михайлович РИ-330940 😉
